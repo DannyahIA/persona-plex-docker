@@ -7,7 +7,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Instala as dependências dentro da imagem
-RUN npm ci --only=production   # ou npm install
+RUN npm install --only=production
 
 # Copia o restante do código
 COPY . .
