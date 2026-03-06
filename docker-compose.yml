@@ -4,7 +4,7 @@ services:
   app:
     build: .
     ports:
-      - "3000:3000"   # ajuste a porta conforme a aplicação
+      - "3000:3000"   
     environment:
       - NODE_ENV=production
       - DB_HOST=db
@@ -13,7 +13,6 @@ services:
       - DB_NAME=personaplex
     depends_on:
       - db
-    # Se precisar persistir arquivos enviados pelo usuário
     volumes:
       - uploads:/app/uploads
 
@@ -26,7 +25,7 @@ services:
     volumes:
       - db_data:/var/lib/postgresql/data
     ports:
-      - "5432:5432"   # opcional, para acessar o banco do host
+      - "5432:5432"   
 
 volumes:
   db_data:

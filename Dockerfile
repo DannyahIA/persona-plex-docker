@@ -1,4 +1,5 @@
-FROM node:18-alpine   # imagem leve com Node.js
+# imagem leve com Node.js
+FROM node:18-alpine   
 
 WORKDIR /app
 
