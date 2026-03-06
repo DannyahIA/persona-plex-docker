@@ -4,28 +4,30 @@ services:
   app:
     build: .
     ports:
-      - "3000:3000"   # porta da aplicação (ajuste conforme necessário)
+      - "3000:3000"   # ajuste a porta conforme a aplicação
     environment:
       - NODE_ENV=production
       - DB_HOST=db
-      - DB_USER=usuario
-      - DB_PASSWORD=senha
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
       - DB_NAME=personaplex
     depends_on:
       - db
+    # Se precisar persistir arquivos enviados pelo usuário
     volumes:
-      - ./uploads:/app/uploads   # se a aplicação precisar de persistência de arquivos
+      - uploads:/app/uploads
 
   db:
-    image: postgres:13           # ou mysql:8, mariadb, etc.
+    image: postgres:13
     environment:
-      - POSTGRES_USER=usuario
-      - POSTGRES_PASSWORD=senha
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=personaplex
     volumes:
       - db_data:/var/lib/postgresql/data
     ports:
-      - "5432:5432"   # opcional, para acesso externo ao banco
+      - "5432:5432"   # opcional, para acessar o banco do host
 
 volumes:
   db_data:
+  uploads:
